@@ -8,6 +8,23 @@
 # If the trip is "Japan", print "Error: Japan trip was canceled."
 # Otherwise, print "Destination: [Trip] | Target: [Date]"
 
+trips = ["Reunion Cruise", "Jamaica", "North Carolina Move"]
+print(trips)
+dates = ["February 2027", "December 2027","2029-2031"]
+print(dates)
+
+trips_and_dates = list(zip(trips, dates))
+print(trips_and_dates)
+index = 0
+
+while index < len(trips_and_dates):
+    trips, dates = trips_and_dates[index]
+    match trips:
+        case "Japan":
+            print("Error: Japan trip has been canceled.")
+        case _:
+            print(f"Destination: {trips} | Target: {dates}")
+    index += 1
 
 # Part 2: The Medical Audit (2D Lists & Comprehensions)
 # Data: Create a 2D list called er_bill_data where each sub-list is ["Service Name", Cost]
@@ -16,6 +33,9 @@
 # Only include the names of the services that cost more than $100.
 # Action: Print: "High priority items to review in late March: [list]"
 
+er_bill_data = [["IV", 500], ["Consultation", 1200], ["Lab", 80], ["Bandage", 20]]
+high_cost_audit = [item[0] for item in er_bill_data if item[1] > 100]
+print(f"High priority items to review in late March: {high_cost_audit}")
 
 # Part 3: The Suburban Health Scan (While Loops & Breaks)
 # Data: Set a variable fuel_level = 100
@@ -23,3 +43,11 @@
 # In each "cycle" of the loop, subtract 20 from the fuel level
 # Print "Current Fuel: [level]%"
 # Logic: If the level hits 20%, print "Low Fuel Warning! Stopping scan." and break the loop
+
+fuel_level = 100
+while fuel_level > 0:
+    fuel_level -= 20
+    print(f"Current Fuel: {fuel_level}%")
+    if fuel_level <= 20:
+        print(f"Low Fuel Warning! Stopping scan.")
+        break
